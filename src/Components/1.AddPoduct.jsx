@@ -1,14 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+
+import React, { useEffect, useState } from "react";
 import ProductCard from "./2.ProductCard";
-import { RandomContext } from "./RandomContext";
 
-export const AddProducts = () => {
+const AddProduct = () => {
   const [PopUp, setPopUp] = useState(false);
-  const accounts = useContext(RandomContext);
-  console.log("accounts", accounts);
-
   const [ProductDetails, setProductDetails] = useState({
-    uniqueId: accounts,
     ProductId: "",
     ProductsDetails: "",
     ProductDescription: "",
@@ -16,32 +12,33 @@ export const AddProducts = () => {
     ProductSize: "",
     ProductQuantity: "",
   });
+  let [arr, setArr] = useState(() => {
+    const savedArr = JSON.parse(localStorage.getItem("productData")) || [];
+    return savedArr;
+  });
 
+  // let[arr,setArr] = useState([])
+  console.log("Array",arr);
 
-
-
-  console.log("hello");
   const [isProductShowOnScreen, setProductShowOnScreen] = useState(false);
 
   useEffect(() => {
-    console.log("mai useEffect hu");
-
-    console.log(ProductDetails);
-  }, [ProductDetails]);
+    localStorage.setItem("productData", JSON.stringify(arr));
+    console.log("useEffect")
+  }, [arr]);
 
   const changeProductId = (e) => {
     setProductDetails({ ...ProductDetails, ProductId: e.target.value });
+    
   };
+  console.log("Outside Objects Print",ProductDetails)
 
   const changeProductsDetails = (e) => {
     setProductDetails({ ...ProductDetails, ProductsDetails: e.target.value });
   };
 
   const changeProductDescription = (e) => {
-    setProductDetails({
-      ...ProductDetails,
-      ProductDescription: e.target.value,
-    });
+    setProductDetails({ ...ProductDetails,ProductDescription: e.target.value,});
   };
 
   const changeProductPrice = (e) => {
@@ -61,7 +58,10 @@ export const AddProducts = () => {
       <header className="h-[10%]  flex justify-end items-center pr-5">
         <button
           className="h-[80%] w-[15%] border-2 border-black bg-yellow-500"
-          onClick={() => setPopUp(!PopUp)}
+          onClick={() => {
+            setPopUp(!PopUp);
+            setProductShowOnScreen(!isProductShowOnScreen);
+          }}
         >
           Add Product
         </button>
@@ -71,77 +71,93 @@ export const AddProducts = () => {
         <section
           className="bg-[#eaeaea] h-full w-4/5 flex flex-col gap-2 p-2"
           id="container"
-        ></section>
+        >
+          <div>
+            {isProductShowOnScreen ? <div></div> : <ProductCard arr={arr} />}
+          </div>
+        </section>
       </div>
 
-      <div>
-        {isProductShowOnScreen ? (
-          <ProductCard ProductDetails={ProductDetails} />
-        ) : (
-          <div></div>
-        )}
-      </div>
-
-      {/* here comes the input box which we are going to popup  */}
       <div className="absolute top-1/2 right-0 transform -translate-y-1/2 -translate-x-[50%] w-1/2 h-[70%]">
         {PopUp ? (
           <div className="flex flex-col gap-2 bg-slate-500  border-white p-5">
-            <h1 className="bg-cyan-500	"> Fill Product Details here </h1>
+            <h1 className="bg-cyan-500"> Fill Product Details here </h1>
             <input
               onChange={changeProductId}
               className="border-2 rounded-2xl p-2 border-black"
               placeholder="Product Id"
               type="text"
+              required
             />
             <input
               onChange={changeProductsDetails}
               className="border-2 rounded-2xl p-2 border-black"
               placeholder="Products details"
               type="text"
+              required
             />
+
             <input
               onChange={changeProductDescription}
               className="border-2 rounded-2xl p-2 border-black"
-              placeholder="Product Description "
+              placeholder="Product Description"
               type="text"
+              required
             />
             <input
               onChange={changeProductPrice}
               className="border-2 rounded-2xl p-2 border-black"
               placeholder="Product Price"
               type="text"
+              required
             />
             <input
               onChange={changeProductSize}
               className="border-2 rounded-2xl p-2 border-black"
               placeholder="Product Size"
               type="text"
+              required
             />
             <input
               onChange={changeProductQuantity}
               className="border-2 rounded-2xl p-2 border-black"
               placeholder="Product Quantity"
               type="text"
+              required
             />
-            {/* <img className="border-2  border-black" src="" alt="image" /> */}
 
             <button
               onClick={() => {
-                setProductShowOnScreen(!isProductShowOnScreen);
-                setPopUp(!PopUp);
-                let date = Date.now();
-                localStorage.setItem(date, JSON.stringify(ProductDetails));
+                if (
+                  ProductDetails.ProductId &&
+                  ProductDetails.ProductsDetails &&
+                  ProductDetails.ProductDescription &&
+                  ProductDetails.ProductPrice &&
+                  ProductDetails.ProductSize &&
+                  ProductDetails.ProductQuantity
+                ) {
+                  setArr([...arr, ProductDetails]);
+                  console.log("hello",arr)
+                  console.log("ProductDetails",ProductDetails)
 
-                // setProductDetails({
-                //   ProductId: "",
-                //   ProductsDetails: "",
-                //   ProductDescription: "",
-                //   ProductPrice: "",
-                //   ProductSize: "",
-                //   ProductQuantity: "",
-                // })
+                  setProductShowOnScreen(!isProductShowOnScreen);
+                  setPopUp(!PopUp);
+                  let date = Date.now();
+                  localStorage.setItem(date, JSON.stringify(ProductDetails));
+
+                  setProductDetails({
+                    ProductId: "",
+                    ProductsDetails: "",
+                    ProductDescription: "",
+                    ProductPrice: "",
+                    ProductSize: "",
+                    ProductQuantity: "",
+                  });
+                } else {
+                  alert("Please fill in all the details before submitting.");
+                }
               }}
-              className=" border-2  border-black bg-sky-600	"
+              className=" border-2  border-black bg-sky-600 "
             >
               Submit Product Details
             </button>
@@ -153,3 +169,5 @@ export const AddProducts = () => {
     </div>
   );
 };
+
+export default AddProduct;
