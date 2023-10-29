@@ -1,3 +1,2 @@
 Version 1
-* Table is generating from the array of objects
-* Moving table to the (LoAddKaroProductsssssss) component
+* Product Card is Generating using Array & Add Product Button
