@@ -1,0 +1,3 @@
+Version 1
+* Table is generating from the array of objects
+* Moving table to the (LoAddKaroProductsssssss) component
