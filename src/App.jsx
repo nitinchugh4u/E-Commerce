@@ -1,5 +1,9 @@
 import React from "react";
-import AddProduct from "./Components/1.AddPoduct";
+import  Header  from "./Componentss/Components/1.Header";
+
+import Footer from "./Componentss/Components/2.Footer";
+import { Outlet } from "react-router-dom";
+
 
 
 
@@ -9,18 +13,19 @@ export const App = ()=>{
 
   return(
     <div>
-      <AddProduct/>
-     
-     
 
+      <Header/>
+      <Outlet/>
+
+
+      <Footer/>
+      
+    
+      
+      
     
      
-     
-
-
-
-
-    </div>
+  </div>
 
 
   )

@@ -1,0 +1,264 @@
+// Main.jsx
+
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Form from "./Components/Nitin/Form.jsx";
+import HomeN from "./Components/Nitin/HomeN.jsx";
+import AboutN from "./Components/Nitin/AboutN.jsx";
+import ContactN from "./Components/Nitin/ContactN.jsx";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/Form",
+        element: <Form />,
+      },
+
+      {
+        path: "/Homen",
+        element: <HomeN />,
+      },
+
+      {
+        path: "/AboutN",
+        element: <AboutN />,
+      },
+
+      {
+        path: "/ContactN",
+        element: <ContactN />,
+      },
+    ],
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <RouterProvider router={router} />
+);
+
+
+
+
+
+// App.jsx
+
+import { Outlet } from "react-router-dom";
+import FooterN from "./Components/FooterN";
+import HeaderN from "./Components/HeaderN";
+
+const App = () => {
+  return (
+    <>
+      <HeaderN />
+      <Outlet />
+      <h1>Yash</h1>
+      <FooterN />
+    </>
+  );
+};
+
+export default App;
+
+
+// Homen.jsx
+
+const HomeN = () => {
+  return <div>HomeN</div>;
+};
+
+export default HomeN;
+
+const HomeN = () => {
+  return <div>AboyN</div>;
+};
+
+export default AboutN;
+
+
+
+
+
+
+// AddProduct.jsx
+
+import { useEffect, useState } from "react";
+import Form from "./Form";
+import { Link } from "react-router-dom";
+
+const AddProduct = () => {
+  const [ProductDetails, setProductDetails] = useState({
+    ProductId: "",
+    ProductsDetails: "",
+    ProductDescription: "",
+    ProductPrice: "",
+    ProductSize: "",
+    ProductQuantity: "",
+  });
+  let [arr, setArr] = useState(() => {
+    const savedArr = JSON.parse(localStorage.getItem("productData")) || [];
+    return savedArr;
+  });
+
+  // let[arr,setArr] = useState([])
+  console.log("Array", arr);
+
+  //   const [isProductShowOnScreen, setProductShowOnScreen] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("productData", JSON.stringify(arr));
+    console.log("useEffect");
+  }, [arr]);
+
+  const onChangeDetails = (e) => {
+    const { name, value } = e.target;
+    setProductDetails({ ...ProductDetails, [name]: value });
+  };
+
+  return (
+    <div className="h-screen border-2 bg-red-500 border-black">
+      <header className="h-[10%]  flex justify-end items-center pr-5">
+        <button className="h-[80%] w-[15%] border-2 border-black bg-yellow-500">
+          <Link to={"/Form"}>Add Product</Link>
+        </button>
+      </header>
+
+      <div className="absolute top-1/2 right-0 transform -translate-y-1/2 -translate-x-[50%] w-1/2 h-[70%]">
+        <Form
+          ProductDetails={ProductDetails}
+          setProductDetails={setProductDetails}
+          onChangeDetails={onChangeDetails}
+          setArr={setArr}
+          arr={arr}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default AddProduct;
+
+
+
+
+
+
+// Form.jsx
+
+
+const Form = ({
+  ProductDetails,
+  onChangeDetails,
+  setProductDetails,
+  setArr,
+  arr,
+}) => {
+  console.log(ProductDetails);
+  return ProductDetails.length === undefined ? (
+    <h1>Helo</h1>
+  ) : (
+    <div>
+      <div className="flex flex-col gap-2 bg-slate-500  border-white p-5">
+        <h1 className="bg-cyan-500"> Fill Product Details here </h1>
+        <input
+          onChange={onChangeDetails}
+          className="border-2 rounded-2xl p-2 border-black"
+          placeholder="Product Id"
+          name="ProductId"
+          type="text"
+          value={ProductDetails.ProductId}
+          required
+        />
+        <input
+          onChange={onChangeDetails}
+          className="border-2 rounded-2xl p-2 border-black"
+          placeholder="Products details"
+          type="text"
+          name="ProductsDetails"
+          value={ProductDetails.ProductsDetails}
+          required
+        />
+
+        <input
+          onChange={onChangeDetails}
+          className="border-2 rounded-2xl p-2 border-black"
+          placeholder="Product Description"
+          type="text"
+          name="ProductDescription"
+          value={ProductDetails.ProductDescription}
+          required
+        />
+        <input
+          onChange={onChangeDetails}
+          className="border-2 rounded-2xl p-2 border-black"
+          placeholder="Product Price"
+          type="text"
+          required
+          value={ProductDetails.ProductPrice}
+          name="ProductPrice"
+        />
+        <input
+          onChange={onChangeDetails}
+          className="border-2 rounded-2xl p-2 border-black"
+          placeholder="Product Size"
+          type="text"
+          required
+          name="ProductSize"
+          value={ProductDetails.ProductSize}
+        />
+        <input
+          onChange={onChangeDetails}
+          className="border-2 rounded-2xl p-2 border-black"
+          placeholder="Product Quantity"
+          value={ProductDetails.ProductQuantity}
+          type="text"
+          required
+          name="ProductQuantity"
+        />
+
+        <button
+          onClick={() => {
+            if (
+              ProductDetails.ProductId &&
+              ProductDetails.ProductsDetails &&
+              ProductDetails.ProductDescription &&
+              ProductDetails.ProductPrice &&
+              ProductDetails.ProductSize &&
+              ProductDetails.ProductQuantity
+            ) {
+              setArr([...arr, ProductDetails]);
+              console.log("hello", arr);
+              console.log("ProductDetails", ProductDetails);
+
+              let date = Date.now();
+              localStorage.setItem(date, JSON.stringify(ProductDetails));
+
+              setProductDetails({
+                ProductId: "",
+                ProductsDetails: "",
+                ProductDescription: "",
+                ProductPrice: "",
+                ProductSize: "",
+                ProductQuantity: "",
+              });
+            } else {
+              alert("Please fill in all the details before submitting.");
+            }
+          }}
+          className=" border-2  border-black bg-sky-600 "
+        >
+          Submit Product Details
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Form;
+
+
+

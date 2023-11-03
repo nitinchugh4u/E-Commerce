@@ -1,0 +1,27 @@
+https://chat.openai.com/share/247e7c67-b755-4213-80bc-45cb392e20ad
+Gunjan Bajaj9:25 AM
+brb
+Vidhya Skill School9:46 AM
+add product
+add-product
+addPRoduct
+Vidhya Skill School9:55 AM
+try {
+      // Send an API request
+      const payload = {
+        title: todoDetails.title,
+        description: todoDetails.description,
+      };
+      const url = "http://localhost:42000/xdankit/todos";
+      const result = await axios.post(url, payload);
+      console.log("Result: ", result);
+    } catch (err) {
+      console.log("Error: ", err);
+    }
+Vidhya Skill School10:04 AM
+https://github.com/Vidhya-Classes/c10-codes/tree/main/7.ReactJS/c10-react-js/src/Features/30-Oct%20-%20API%20Calls%20with%20TODO/features/Todos
+Palak Gontiya10:06 AM
+{ ...todoDetails, [name]: value }
+
+
+https://github.com/Vidhya-Classes/coherence-server

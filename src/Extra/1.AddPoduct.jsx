@@ -12,6 +12,7 @@ const AddProduct = () => {
     ProductSize: "",
     ProductQuantity: "",
   });
+  
   let [arr, setArr] = useState(() => {
     const savedArr = JSON.parse(localStorage.getItem("productData")) || [];
     return savedArr;
