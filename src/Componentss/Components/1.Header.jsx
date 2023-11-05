@@ -3,25 +3,40 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div>
-      <div className="bg-slate-300 flex justify-between " >
-        <img
-          src="https://img.freepik.com/free-vector/hand-drawn-clothing-store-logo-design_23-2149577874.jpg?w=740&t=st=1698062035~exp=1698062635~hmac=980729a20683fdea6a12c5fe694908b4190a7c21239faf850deed5520f33db11"
-          alt="" height="50px"  width ="50px"
+    <div className="h-[10%] border-2 border-black  flex p-2 bg-[#eaeaea]">
+      <section className="w-1/2 flex justify-evenly items-center">
+        <h1 className="text-[1.4rem] font-bold text-blue-900">
+          Style Collection
+        </h1>
+        <select>
+          {/* map */}
+          <option value="">Jeans</option>
+          <option value="">Jeans</option>
+        </select>
+        <select>
+          {/* map */}
+          <option value="">Shirt</option>
+          <option value="">Jeans</option>
+        </select>
+        <select>
+          {/* map */}
+          <option value="">T-shirt</option>
+          <option value="">Jeans</option>
+        </select>
+      </section>
+
+      <section className="w-1/2 flex items-center justify-evenly">
+        <input
+          className="w-3/5 border-[1px] p-2 border-black text-[.9rem]"
+          type="text"
+          placeholder="Search by product, category or collection"
         />
-
-        <ul className="flex justify-between gap-10 " >
-          <li>MEN</li>
-          <li>About</li>
-          <Link to={"/Admin"} >
-            Admin
-          </Link>
-          
-        </ul>
-
-        <input className="border-2 border-black" type="text" placeholder="Search here"  />
-      </div>
+        <p>Login</p>
+        <Link to={"/Admin"}>
+          <p>Admin</p>
+        </Link>
+      </section>
     </div>
   );
 };
-export default Header
+export default Header;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import Table from "./5.Table";
 
+import AddProduct from "./3.AddProducts";
 import { useContext } from "react";
 import { ProductContext } from "../../Context/1.ProductData";
 
@@ -24,7 +25,7 @@ const ProductForm = () => {
     const value = e.target.value;
     SetProducts({ ...Products, [name]: value });
   };
-  console.log(Products);
+  // console.log(Products);
 
   const HandleSubmit = () => {
     if (
@@ -34,7 +35,6 @@ const ProductForm = () => {
       Products.ProductPrice &&
       Products.ProductSize &&
       Products.ProductQuantity
-      
     ) {
       setArr([...arr, Products]);
       let date = Date.now();
@@ -48,23 +48,22 @@ const ProductForm = () => {
         ProductSize: "",
         ProductQuantity: "",
       });
-    } else {
+    }  else {
       alert("Please fill in all the details before submitting.");
     }
   };
-/  // console.log("arr", arr);
+  console.log(arr);
 
   useEffect(() => {
     localStorage.setItem("Products", JSON.stringify(arr));
-    console.log("useEffect", arr);
+    console.log("useEffect")
   }, [arr]);
 
+
   return (
-    <div className="border-2 border-black h-1/2 absolute w-1/2 right-[15%]">
-      <div className="flex flex-col items-center gap-1">
-        <h1 className="text-[1.3rem] font-bold text-center">
-          Fill Product Details Here
-        </h1>
+    <div>
+      <div>
+        <h1>Fill Product Details Here</h1>
         <input
           onChange={OnInputChange}
           className="border 2 border-black "
@@ -107,13 +106,9 @@ const ProductForm = () => {
           type="text"
           name="ProductQuantity"
         />
-        <Link
-          to={"/Admin"}
-          onClick={HandleSubmit}
-          className="border 2 border-black p-1 bg-yellow-500 font-bold"
-        >
-          Submit Product details
-        </Link>
+        <button onClick={HandleSubmit} className="border 2 border-black ">
+          <Link to={"/Admin"}>Submit Product details</Link>
+        </button>
       </div>
     </div>
   );

@@ -1,3 +1,29 @@
+// import React from "react";
+// import ReactDOM from "react-dom/client";
+
+// import "./index.css";
+
+// import { RouterProvider, createBrowserRouter } from "react-router-dom";
+// import { App } from "./App";
+// import AddProduct from "./Components/1.AddPoduct";
+
+// const myRouter = createBrowserRouter([
+//  {path: "/",
+//  element:<App/>
+// },
+//  {path: "/AddProduct",
+//  element: <AddProduct/>
+//  }
+
+// ]);
+
+// ReactDOM.createRoot(document.getElementById("root")).render(
+//   <>
+
+//       <RouterProvider router={myRouter} />
+
+//   </>
+// );
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -19,12 +45,9 @@ const myRouter = createBrowserRouter([
     element: <App />,
 
     children: [
-      {
-        path: "/Admin",
-        element: <Admin />,
-        children: [{ path: "/Admin/Form", element: <ProductForm /> }],
-      },
-      // { path: "/Table", element: <Table /> },
+      { path: "/Admin", element: <Admin /> },
+      { path: "/Form", element: <ProductForm /> },
+      { path: "/Table", element: <Table /> },
     ],
   },
 
@@ -37,6 +60,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     {/* <App/>  */}
     <ProductProvider>
+      
       <RouterProvider router={myRouter} />
     </ProductProvider>
 

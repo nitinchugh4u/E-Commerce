@@ -1,7 +1,7 @@
 import React from "react";
 const Footer = () => {
   return (
-    <div className="h-[10%] border-2 border-black">
+    <div>
       <h1>I am footer</h1>
     </div>
   );
