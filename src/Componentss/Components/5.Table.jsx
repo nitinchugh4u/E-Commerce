@@ -15,12 +15,13 @@ const Table = () => {
       <div>
         <div>
           <ul className="flex border-[1px] border-black">
+          <li className="w-[15%] border-[1px] border-black">ProductId</li>
             <li className="w-[15%] border-[1px] border-black">ProductTitles</li>
             <li className="w-[15%] border-[1px] border-black">Description</li>
             <li className="w-[15%] border-[1px] border-black">Price</li>
             <li className="w-[15%] border-[1px] border-black">Size</li>
             <li className="w-[15%] border-[1px] border-black">Quantity</li>
-            <li className="w-[15%] border-[1px] border-black">ProductId</li>
+            
           </ul>
         </div>
       </div>

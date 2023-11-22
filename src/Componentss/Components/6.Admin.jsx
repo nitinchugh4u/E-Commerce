@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Table from "./5.Table";
 import { Link, Outlet } from "react-router-dom";
 import { ProductContext } from "../../Context/1.ProductData";
 
 export const Admin = () => {
   const { arr } = useContext(ProductContext);
+ 
+  
 
   console.log(arr);
   return (

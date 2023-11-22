@@ -5,17 +5,20 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ProductContext } from "../../Context/1.ProductData";
 
+
+
 const ProductForm = () => {
   const { arr, setArr } = useContext(ProductContext);
   // console.log("data", arr, setArr);
   // const [arr, setArr] = useState([]);
   const [Products, SetProducts] = useState({
-    ProductId: "",
-    ProductTitle: "",
-    ProductDescription: "",
-    ProductPrice: "",
-    ProductSize: "",
-    ProductQuantity: "",
+        ProductId: "",
+        ProductTitle: "",
+        ProductImg: "",
+        ProductDescription: "",
+        ProductPrice: "",
+        ProductSize: "",
+        ProductQuantity: "",
   });
   // const [arr, setArr] = useState([]);
 
@@ -43,6 +46,7 @@ const ProductForm = () => {
       SetProducts({
         ProductId: "",
         ProductTitle: "",
+        ProductImg: "",
         ProductDescription: "",
         ProductPrice: "",
         ProductSize: "",
@@ -78,6 +82,13 @@ const ProductForm = () => {
           placeholder="Product Title"
           type="text"
           name="ProductTitle"
+        />
+          <input
+          onChange={OnInputChange}
+          className="border 2 border-black "
+          placeholder="Image Link Here"
+          type="text"
+          name="ProductImg"
         />
         <input
           onChange={OnInputChange}

@@ -1,7 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 const Header = () => {
+
+  const inputValue = (e)=>{
+    console.log(e.target.value)
+    
+
+
+  }
+
+
   return (
     <div className="h-[10%] border-2 border-black  flex p-2 bg-[#eaeaea]">
       <section className="w-1/2 flex justify-evenly items-center">
@@ -26,7 +36,7 @@ const Header = () => {
       </section>
 
       <section className="w-1/2 flex items-center justify-evenly">
-        <input
+        <input onChange={inputValue}
           className="w-3/5 border-[1px] p-2 border-black text-[.9rem]"
           type="text"
           placeholder="Search by product, category or collection"
@@ -35,6 +45,12 @@ const Header = () => {
         <Link to={"/Admin"}>
           <p>Admin</p>
         </Link>
+
+        <Link to={"/Cart"}>
+        <p>Cart</p>
+        </Link>
+        
+      
       </section>
     </div>
   );

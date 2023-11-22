@@ -12,6 +12,9 @@ import { Admin } from "./Componentss/Components/6.Admin";
 import Table from "./Componentss/Components/5.Table";
 import ProductForm from "./Componentss/Components/4.ProductForm";
 import { ProductProvider } from "./Context/1.ProductData";
+import { Cart } from "./Componentss/Components/7.Cart";
+import { CartProductProvider } from "./Context/cartProduct";
+import { QuantityProductProvider } from "./Context/CartQuantity";
 
 const myRouter = createBrowserRouter([
   {
@@ -26,7 +29,11 @@ const myRouter = createBrowserRouter([
       },
       // { path: "/Table", element: <Table /> },
     ],
-  },
+  },{
+    path:"/Cart",
+    element: <Cart/>  
+
+  }
 
   // {path:"/Admin",
   // element:<Admin/>
@@ -36,9 +43,13 @@ const myRouter = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     {/* <App/>  */}
+    <QuantityProductProvider>
+    <CartProductProvider>
     <ProductProvider>
       <RouterProvider router={myRouter} />
     </ProductProvider>
+    </CartProductProvider>
+    </QuantityProductProvider>
 
     {/* <RouterProvider router={myRouter} /> */}
   </>
