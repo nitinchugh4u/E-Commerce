@@ -13,6 +13,7 @@ export const Cart = () => {
   const [add, setAdd] = useState(1);
   const [remove, setRemove] = useState(1);
   const [delet, setDelete] = useState(1);
+
   const { Quantity, setQuantity } = useContext(QuantityProductContext);
 
   const removeItems = (cart, indexToRemove) => {
@@ -43,7 +44,7 @@ export const Cart = () => {
       <h1 className="bg-orange-500">Cart</h1>
       <br />
 
-      <div className=" flex flex-wrap bg-sky-700   gap-5 border-4 border-red-600  bg-grey ">
+      <div className=" flex flex-wrap bg-sky-700   gap-5 border-4   bg-grey ">
         {cart.map((item, index) => {
           return (
             <div className="  border-2   bg-sky-500" key={index}>
@@ -93,6 +94,7 @@ export const Cart = () => {
         })}
 
         <div>
+          { cart.length ? <div  > 
           <h1>Price Summary</h1>
           <h1>Total Mrp (incl all Taxes) = {TotalPrice} </h1>
           <h1>Shipping Charges = FREE </h1>
@@ -100,6 +102,8 @@ export const Cart = () => {
           <h1>Subtotal = {subTotal} </h1>
 
           <button className="bg-rose-400 h-[50px] ">Check Out</button>
+          </div> : <div>Please go For shopping </div>
+}
         </div>
       </div>
     </div>

@@ -15,6 +15,7 @@ import { ProductProvider } from "./Context/1.ProductData";
 import { Cart } from "./Componentss/Components/7.Cart";
 import { CartProductProvider } from "./Context/cartProduct";
 import { QuantityProductProvider } from "./Context/CartQuantity";
+import { Login } from "./Componentss/Components/8.Login";
 
 const myRouter = createBrowserRouter([
   {
@@ -31,8 +32,11 @@ const myRouter = createBrowserRouter([
     ],
   },{
     path:"/Cart",
-    element: <Cart/>  
-
+    element: <Cart/> 
+  },
+  {
+    path:"/Login",
+    element: <Login/> 
   }
 
   // {path:"/Admin",
