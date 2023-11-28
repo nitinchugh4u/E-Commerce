@@ -1,4 +1,3 @@
-
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -16,6 +15,12 @@ import { Cart } from "./Componentss/Components/7.Cart";
 import { CartProductProvider } from "./Context/cartProduct";
 import { QuantityProductProvider } from "./Context/CartQuantity";
 import { Login } from "./Componentss/Components/8.Login";
+import {
+  CopyArrProductContext,
+  CopyArrProductProvider,
+} from "./Context/CoptArr";
+import { SetArrProductContext, SetArrProductProvider } from "./Context/setFill";
+import { Toaster } from "react-hot-toast";
 
 const myRouter = createBrowserRouter([
   {
@@ -30,14 +35,15 @@ const myRouter = createBrowserRouter([
       },
       // { path: "/Table", element: <Table /> },
     ],
-  },{
-    path:"/Cart",
-    element: <Cart/> 
   },
   {
-    path:"/Login",
-    element: <Login/> 
-  }
+    path: "/Cart",
+    element: <Cart />,
+  },
+  {
+    path: "/Login",
+    element: <Login />,
+  },
 
   // {path:"/Admin",
   // element:<Admin/>
@@ -47,13 +53,21 @@ const myRouter = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     {/* <App/>  */}
+    {/* <CopyArrProductProvider>  */}
+
     <QuantityProductProvider>
-    <CartProductProvider>
-    <ProductProvider>
-      <RouterProvider router={myRouter} />
-    </ProductProvider>
-    </CartProductProvider>
+      <Toaster />
+      <CartProductProvider>
+        <ProductProvider>
+          <CopyArrProductProvider>
+            <SetArrProductProvider>
+              <RouterProvider router={myRouter} />
+            </SetArrProductProvider>
+          </CopyArrProductProvider>
+        </ProductProvider>
+      </CartProductProvider>
     </QuantityProductProvider>
+    {/* </CopyArrProductProvider> */}
 
     {/* <RouterProvider router={myRouter} /> */}
   </>

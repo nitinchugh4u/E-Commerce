@@ -1,30 +1,50 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../../Context/1.ProductData";
+import { CopyArrProductContext } from "../../Context/CoptArr";
+import { SetArrProductContext } from "../../Context/setFill";
 
 const Header = () => {
   const { arr, setArr } = useContext(ProductContext);
-  const [arrCopy, setCopy] = useState([...arr]);
+  const { arrCopy, setCopy } = useContext(CopyArrProductContext);
+
+  const { fill, setFill } = useContext(SetArrProductContext);
+
   // console.log("arrCopy", arrCopy);
 
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState("men");
+  const [Price, setPrice] = useState("");
 
   const inputValue = (e) => {
-    const search = e.target.value;
+    if (filter !== "men") {
+      const search = e.target.value;
+      console.log("fill", fill);
 
-    const filteredArray = arrCopy.filter((item, index) => {
-      let searchLc = search.toLowerCase();
-      let itemLc = item.ProductDescription.toLowerCase();
-      itemLc.includes(searchLc);
-      return itemLc.includes(search);
-    });
+      const filteredArray = fill.filter((item, index) => {
+        let searchLc = search.toLowerCase();
+        let itemLc = item.ProductDescription.toLowerCase();
+        itemLc.includes(searchLc);
+        return itemLc.includes(search);
+      });
+      setArr(filteredArray);
+    } else {
+      const search = e.target.value;
+
+      const filteredArray = arrCopy.filter((item, index) => {
+        let searchLc = search.toLowerCase();
+        let itemLc = item.ProductDescription.toLowerCase();
+        itemLc.includes(searchLc);
+        return itemLc.includes(search);
+      });
+      setArr(filteredArray);
+    }
     // console.log("filteredArray", filteredArray);
-    setArr(filteredArray);
   };
+  console.log("fill", fill);
 
   const handleChange = (event) => {
     console.log(event.target.value, "fff");
-    // setFilter(event.target.value);
+    setFilter(event.target.value);
 
     const filteredArray = arrCopy.filter((item, index) => {
       // console.log("array",filteredArray);
@@ -38,27 +58,68 @@ const Header = () => {
 
     console.log("filteredArray", filteredArray);
     setArr(filteredArray);
+    setFill(filteredArray);
     // setCopy(filteredArray)
   };
+  console.log("arr", arr);
+
+  const handlePrices = (e) => {
+    if (e.target.value === "PRICES") {
+    } else if (e.target.value === "lowToHigh") {
+      const sortedArray = [...fill];
+      const x = sortedArray.sort((a, b) => a.ProductPrice - b.ProductPrice);
+      setFill([...x]);
+
+      setArr([...x]);
+    } else if (e.target.value === "highToLow") {
+      const sortedArray = [...fill];
+      const x = sortedArray.sort((a, b) => b.ProductPrice - a.ProductPrice);
+      setFill([...x]);
+
+      setArr([...x]);
+    } else {
+    }
+  };
+
   return (
-    <div className="h-[10%] border-2 border-black  flex p-2 bg-[#eaeaea]">
+    <div className="h-[10%] border-2   flex p-2 bg-[#eaeaea]">
       <section className="w-1/2 flex justify-evenly items-center">
+        <img
+          className="rounded-full"
+          src="https://img.freepik.com/free-vector/hand-drawn-clothing-store-logo-design_23-2149499592.jpg"
+          alt=""
+          height="60px"
+          width="60px"
+        />
+
         <h1 className="text-[1.4rem] font-bold text-blue-900">
           Style Collection
         </h1>
-        ``
-        <select onChange={(e) => handleChange(e)} value={filter}>
+
+        <select
+          className="p-2 bg-none "
+          onChange={(e) => handleChange(e)}
+          value={filter}
+        >
           {/* map */}
-          <option value="men">MEN</option>
-          <option value="jeans">Jeans</option>
-          <option value="shirt">Shirt</option>
-          <option value="tshirt">T-shirt</option>
+          <option className="bg-blue-400  " value="men">
+            MEN
+          </option>
+          <option className="bg-blue-400  " value="jeans">
+            Jeans
+          </option>
+          <option className="bg-blue-400  " value="shirt">
+            Shirt
+          </option>
+          <option className="bg-blue-400  " value="tshirt">
+            T-shirt
+          </option>
         </select>
-        <select>
+        <select onChange={(e) => handlePrices(e)} value={Price}>
           {/* map */}
-          <option value="">PRICES</option>
-          <option value="">High to Low</option>
-          <option value="">Low to High</option>
+          <option value="Prices">PRICES</option>
+          <option value="highToLow">High to Low</option>
+          <option value="lowToHigh">Low to High</option>
         </select>
       </section>
 

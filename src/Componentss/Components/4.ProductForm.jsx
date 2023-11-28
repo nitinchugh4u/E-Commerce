@@ -4,21 +4,26 @@ import { Link } from "react-router-dom";
 
 import { useContext } from "react";
 import { ProductContext } from "../../Context/1.ProductData";
-
+import { CopyArrProductContext } from "../../Context/CoptArr";
+import { SetArrProductContext } from "../../Context/setFill";
 
 
 const ProductForm = () => {
   const { arr, setArr } = useContext(ProductContext);
   // console.log("data", arr, setArr);
   // const [arr, setArr] = useState([]);
+  const {arrCopy, setCopy} = useContext(CopyArrProductContext);
+  const {fill, setFill} = useContext(SetArrProductContext);
+
+
   const [Products, SetProducts] = useState({
-        ProductId: "",
-        ProductTitle: "",
-        ProductImg: "",
-        ProductDescription: "",
-        ProductPrice: "",
-        ProductSize: "",
-        ProductQuantity: "",
+    ProductId: "",
+    ProductTitle: "",
+    ProductImg: "",
+    ProductDescription: "",
+    ProductPrice: "",
+    ProductSize: "",
+    ProductQuantity: "",
   });
   // const [arr, setArr] = useState([]);
 
@@ -36,10 +41,16 @@ const ProductForm = () => {
       Products.ProductDescription &&
       Products.ProductPrice &&
       Products.ProductSize &&
-      Products.ProductQuantity
-      
+      Products.ProductQuantity &&
+      Products.productType
     ) {
       setArr([...arr, Products]);
+      if(Products.productType==="jeans" || Products.productType==="shirt" ||  Products.productType==="tshirt" ){
+
+        setCopy([...arrCopy, Products]);
+      }
+      
+
       let date = Date.now();
       localStorage.setItem(date, JSON.stringify(Products));
 
@@ -51,12 +62,13 @@ const ProductForm = () => {
         ProductPrice: "",
         ProductSize: "",
         ProductQuantity: "",
+        productType: ""
       });
     } else {
       alert("Please fill in all the details before submitting.");
     }
   };
-/  // console.log("arr", arr);
+  /  / / console.log("arr", arr);
 
   useEffect(() => {
     localStorage.setItem("Products", JSON.stringify(arr));
@@ -83,7 +95,7 @@ const ProductForm = () => {
           type="text"
           name="ProductTitle"
         />
-          <input
+        <input
           onChange={OnInputChange}
           className="border 2 border-black "
           placeholder="Image Link Here"
@@ -117,6 +129,14 @@ const ProductForm = () => {
           placeholder="Product Quantity"
           type="text"
           name="ProductQuantity"
+        />
+
+        <input
+          onChange={OnInputChange}
+          className="border 2 border-black "
+          placeholder="Product Type"
+          type="text"
+          name="productType"
         />
         <Link
           to={"/Admin"}
