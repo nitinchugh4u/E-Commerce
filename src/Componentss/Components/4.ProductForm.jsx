@@ -140,7 +140,11 @@ const ProductForm = () => {
         />
         <Link
           to={"/Admin"}
-          onClick={HandleSubmit}
+          onClick={HandleSubmit
+            // toast.success("Product Details Is Submitted");
+
+          // }
+        }
           className="border 2 border-black p-1 bg-yellow-500 font-bold"
         >
           Submit Product details

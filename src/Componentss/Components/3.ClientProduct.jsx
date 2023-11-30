@@ -40,7 +40,8 @@ export const ClientProduct = () => {
   // console.log("cart", cart);
   return (
     <div
-      className=" p-4 mt-8 flex flex-wrap justify-center bg-#e9e9e9  
+      className=" p-4 bg-gray-50 bg-[#e9e9e9]      flex flex-wrap justify-center
+      
     
     
 
@@ -49,24 +50,25 @@ export const ClientProduct = () => {
       {arr.map((item, index) => {
         return (
           <div
-            className=" bg-slate-200  p-10     rounded-xl  flex flex-col justify-center gap-2 items-center "
+            className="   bg-[#eaeaea]  mt-5  border-black    p-2 rounded-xl  flex flex-col justify-center gap-2 items-center "
+            // style={{ border: "1px solid black" }}
             key={index}
           >
             <img
-              className="h-[120px] bg-white mb-2"
+              className="h-[150px]   bg-white mb-2"
               src={item.ProductImg}
               alt="image"
             />
             {/* <h2>{item.ProductTitle}</h2> */}
-            <h2>{item.ProductDescription}</h2>
-            <h2>{item.ProductPrice}</h2>
+            <h2 className="font-semibold">{item.ProductDescription}</h2>
+            <h2 className="font-bold">₹{item.ProductPrice}</h2>
 
             <button
               onClick={() => {
                 SelectedProducts(arr, index),
                   toast.success("Product Added To Cart");
               }}
-              className=" rounded-md bg- p-2 border-2  bg-gray-400 "
+              className="rounded-md bg-gray-500 text-white px-4 py-1 mt-2"
             >
               Add to Cart
             </button>

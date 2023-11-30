@@ -69,12 +69,14 @@ const Header = () => {
       const sortedArray = [...fill];
       const x = sortedArray.sort((a, b) => a.ProductPrice - b.ProductPrice);
       setFill([...x]);
+      setPrice()
 
       setArr([...x]);
     } else if (e.target.value === "highToLow") {
       const sortedArray = [...fill];
       const x = sortedArray.sort((a, b) => b.ProductPrice - a.ProductPrice);
       setFill([...x]);
+      setPrice()
 
       setArr([...x]);
     } else {
@@ -82,7 +84,7 @@ const Header = () => {
   };
 
   return (
-    <div className="h-[10%] border-2   flex p-2 bg-[#eaeaea]">
+    <div className="h-[10%] border-2   flex p-2 bg-[#eaeaea] ">
       <section className="w-1/2 flex justify-evenly items-center">
         <img
           className="rounded-full"
@@ -97,36 +99,29 @@ const Header = () => {
         </h1>
 
         <select
-          className="p-2 bg-none "
+          className="p-2 bg-none rounded-md "
           onChange={(e) => handleChange(e)}
           value={filter}
         >
           {/* map */}
-          <option className="bg-blue-400  " value="men">
-            MEN
-          </option>
-          <option className="bg-blue-400  " value="jeans">
-            Jeans
-          </option>
-          <option className="bg-blue-400  " value="shirt">
-            Shirt
-          </option>
-          <option className="bg-blue-400  " value="tshirt">
-            T-shirt
-          </option>
+          <option className="bg-red-500 p-2 " value="men">MEN</option>
+          <option className="bg-red-500 p-2 " value="jeans">Jeans</option>
+          <option className="bg-red-500 p-2 " value="shirt">Shirt</option>
+          <option className="bg-red-500 p-2 " value="tshirt">T-shirt</option>
         </select>
-        <select onChange={(e) => handlePrices(e)} value={Price}>
+        
+        <select  className="p-2 bg-none rounded-md "  onChange={(e) => handlePrices(e)} value={Price}>
           {/* map */}
-          <option value="Prices">PRICES</option>
-          <option value="highToLow">High to Low</option>
-          <option value="lowToHigh">Low to High</option>
+          <option className="bg-red-500 p-2"   value="Prices">PRICES</option>
+          <option className="bg-red-500 p-2" value="highToLow">High to Low</option>
+          <option className="bg-red-500 p-2" value="lowToHigh">Low to High</option>
         </select>
       </section>
 
       <section className="w-1/2 flex items-center justify-evenly">
         <input
           onChange={inputValue}
-          className="w-3/5 border-[1px] p-2 border-black text-[.9rem]"
+          className="w-3/5 rounded-md  p-2 border-black text-[.9rem]"
           type="text"
           placeholder="Search by product, category or collection"
         />
