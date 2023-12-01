@@ -15,13 +15,13 @@ export const Admin = () => {
 
   console.log(arr);
   return (
-    <div className=" h-screen bg-neutral-300 flex">
+    <div className=" p-3 bg-white flex">
       <section className="w-1/5 bg-[#eaeaea] h-full"></section>
       <section className="w-4/5 h-full">
         <header className="   border-black p-1 flex items-center justify-end px-5  ">
           <Link 
-            to={"/Admin/Form"}
-            className="border-2 border-black p-2 bg-yellow-500"
+            to={"/ProductForm"}
+            className="border-2 border-black p-2 bg-yellow-500 rounded-md"
           // ><button onClick={()=>{
             // AddProducts(),
             // toast.success("Add New Product");
@@ -34,8 +34,9 @@ export const Admin = () => {
           </Link>
         </header>
         <Table />
-
+        
         <Outlet />
+    
       </section>
     </div>
   );

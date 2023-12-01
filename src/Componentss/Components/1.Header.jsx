@@ -104,17 +104,17 @@ const Header = () => {
           value={filter}
         >
           {/* map */}
-          <option className="bg-red-500 p-2 " value="men">MEN</option>
-          <option className="bg-red-500 p-2 " value="jeans">Jeans</option>
-          <option className="bg-red-500 p-2 " value="shirt">Shirt</option>
-          <option className="bg-red-500 p-2 " value="tshirt">T-shirt</option>
+          <option className="     bg-[#eaeaea] p-2 " value="men">Men</option>
+          <option className=" bg-[#eaeaea]    " value="jeans">Jeans</option>
+          <option className=" bg-[#eaeaea] p-2 " value="shirt">Shirt</option>
+          <option className="  bg-[#eaeaea] p-2 " value="tshirt">T-shirt</option>
         </select>
         
         <select  className="p-2 bg-none rounded-md "  onChange={(e) => handlePrices(e)} value={Price}>
           {/* map */}
-          <option className="bg-red-500 p-2"   value="Prices">PRICES</option>
-          <option className="bg-red-500 p-2" value="highToLow">High to Low</option>
-          <option className="bg-red-500 p-2" value="lowToHigh">Low to High</option>
+          <option className=" bg-[#eaeaea] p-2"   value="Prices">Prices</option>
+          <option className="  bg-[#eaeaea] p-2" value="highToLow">High to Low</option>
+          <option className=" bg-[#eaeaea] p-2" value="lowToHigh">Low to High</option>
         </select>
       </section>
 

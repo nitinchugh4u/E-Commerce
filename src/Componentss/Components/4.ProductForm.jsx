@@ -10,6 +10,7 @@ import { SetArrProductContext } from "../../Context/setFill";
 
 const ProductForm = () => {
   const { arr, setArr } = useContext(ProductContext);
+  
   // console.log("data", arr, setArr);
   // const [arr, setArr] = useState([]);
   const {arrCopy, setCopy} = useContext(CopyArrProductContext);
@@ -76,56 +77,57 @@ const ProductForm = () => {
   }, [arr]);
 
   return (
-    <div className="border-2 border-black h-1/2 absolute w-1/2 right-[15%]">
-      <div className="flex flex-col items-center gap-1">
-        <h1 className="text-[1.3rem] font-bold text-center">
-          Fill Product Details Here
+    <div className="flex justify-center items-center h-screen">
+      <div className="border-2 rounded-md border-black bg-gray-200 w-5/12 h-4/5 pt-1 pb-2">
+        <div className="flex flex-col justify-center items-center gap-1">
+        <h1 className="text-[1.3rem] pt-5 font-bold text-center">
+          Add Product Details 
         </h1>
         <input
           onChange={OnInputChange}
-          className="border 2 border-black "
+          className="border 2 border-black rounded-md "
           placeholder="Product Id"
           type="text"
           name="ProductId"
         />
         <input
           onChange={OnInputChange}
-          className="border 2 border-black "
+          className="border 2 border-black rounded-md "
           placeholder="Product Title"
           type="text"
           name="ProductTitle"
         />
         <input
           onChange={OnInputChange}
-          className="border 2 border-black "
+          className="border 2 border-black rounded-md "
           placeholder="Image Link Here"
           type="text"
           name="ProductImg"
         />
         <input
           onChange={OnInputChange}
-          className="border 2 border-black "
+          className="border 2 border-black rounded-md "
           placeholder="Product Description "
           type="text"
           name="ProductDescription"
         />
         <input
           onChange={OnInputChange}
-          className="border 2 border-black "
+          className="border 2 border-black rounded-md "
           placeholder="Product Price"
           type="text"
           name="ProductPrice"
         />
         <input
           onChange={OnInputChange}
-          className="border 2 border-black "
+          className="border 2 border-black rounded-md "
           placeholder="Product Size"
           type="text"
           name="ProductSize"
         />
         <input
           onChange={OnInputChange}
-          className="border 2 border-black "
+          className="border 2 border-black rounded-md "
           placeholder="Product Quantity"
           type="text"
           name="ProductQuantity"
@@ -133,7 +135,7 @@ const ProductForm = () => {
 
         <input
           onChange={OnInputChange}
-          className="border 2 border-black "
+          className="border 2 border-black rounded-md "
           placeholder="Product Type"
           type="text"
           name="productType"
@@ -145,11 +147,12 @@ const ProductForm = () => {
 
           // }
         }
-          className="border 2 border-black p-1 bg-yellow-500 font-bold"
+          className="border 2 border-black mt-3 p-1 rounded-md bg-yellow-500 font-bold"
         >
           Submit Product details
         </Link>
       </div>
+    </div>
     </div>
   );
 };

@@ -55,7 +55,8 @@ export const ClientProduct = () => {
             key={index}
           >
             <img
-              className="h-[150px]   bg-white mb-2"
+            // h-[150px]
+              className="h-[180px] w-[200px]  bg-white mb-2"
               src={item.ProductImg}
               alt="image"
             />

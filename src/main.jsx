@@ -21,19 +21,26 @@ import {
 } from "./Context/CoptArr";
 import { SetArrProductContext, SetArrProductProvider } from "./Context/setFill";
 import { Toaster } from "react-hot-toast";
+import { ClientProduct } from "./Componentss/Components/3.ClientProduct";
 
 const myRouter = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-
     children: [
+
+      {path: "/",
+    element: <ClientProduct/>
+  },
       {
         path: "/Admin",
         element: <Admin />,
-        children: [{ path: "/Admin/Form", element: <ProductForm /> }],
       },
-      // { path: "/Table", element: <Table /> },
+      {
+        path: "/ProductForm",
+        element: <ProductForm/>
+
+      }
     ],
   },
   {

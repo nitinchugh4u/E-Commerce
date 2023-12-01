@@ -84,14 +84,14 @@ const Table = () => {
   return isEditClicked ? (
     // <h1>Table Is Empty </h1>
 
-    <div className="border-2 border-black h-1/2 absolute h-3/4 w-1/2 right-[15%]">
-      <div className="flex flex-col items-center gap-1">
-        <h1 className="text-[1.3rem] pt-4 font-bold text-center">
+    <div className="border-2 border-black rounded-md bg-gray-200 w-7/12 flex-col  ml-20 flex justify-center  w-7/12 pb-4      ">
+      <div className="flex flex-col  justify-center items-center gap-1    ">
+        <h1 className="text-[1.3rem] pt-5 font-bold text-center">
           Edit Product Details Here
         </h1>
         <input
           onChange={(e) => OnInputChange(e)}
-          className="border 2 border-black "
+          className="border 2 border-black rounded-md "
           placeholder="Product Id"
           type="text"
           name="ProductId"
@@ -99,42 +99,42 @@ const Table = () => {
 
         <input
           onChange={(e) => OnInputChange(e)}
-          className="border 2 border-black "
+          className="border 2 border-black rounded-md "
           placeholder="Product Title"
           type="text"
           name="ProductTitle"
         />
         <input
           onChange={(e) => OnInputChange(e)}
-          className="border 2 border-black "
+          className="border 2 border-black rounded-md "
           placeholder="Image Link Here"
           type="text"
           name="ProductImg"
         />
         <input
           onChange={(e) => OnInputChange(e)}
-          className="border 2 border-black "
+          className="border 2 border-black rounded-md "
           placeholder="Product Description "
           type="text"
           name="ProductDescription"
         />
         <input
           onChange={(e) => OnInputChange(e)}
-          className="border 2 border-black "
+          className="border 2 border-black rounded-md "
           placeholder="Product Price"
           type="text"
           name="ProductPrice"
         />
         <input
           onChange={(e) => OnInputChange(e)}
-          className="border 2 border-black "
+          className="border 2 border-black rounded-md  "
           placeholder="Product Size"
           type="text"
           name="ProductSize"
         />
         <input
           onChange={(e) => OnInputChange(e)}
-          className="border 2 border-black "
+          className="border 2 border-black rounded-md "
           placeholder="Product Quantity"
           type="text"
           name="ProductQuantity"
@@ -142,7 +142,7 @@ const Table = () => {
 
         <input
           onChange={(e) => OnInputChange(e)}
-          className="border 2  border-black "
+          className="border 2  border-black rounded-md "
           placeholder="Product Type"
           type="text"
           name="productType"
@@ -155,7 +155,7 @@ const Table = () => {
             toast.success("Edit Details is Submitted");
 
           }}
-          className="border 2 mt-2  border-black p-1 bg-yellow-500 font-bold"
+className="border 2 border-black mt-3 p-1 rounded-md bg-yellow-500 font-bold"
         >
           {" "}
           Submit Edit details{" "}
@@ -201,7 +201,7 @@ const Table = () => {
               <td className="w-[15%] border-[1px] border-black text-center">
                 {item.ProductQuantity}
               </td>
-              <td className="w-[15%] border-[1px] border-black text-center">
+              <td className="w-[15%] border-[1px]  border-black text-center">
                 <button onClick={() => {
                   deleteProduct(arr, index);
                   toast.success("Product is Deleted");
