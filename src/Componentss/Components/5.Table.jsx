@@ -6,7 +6,8 @@ import { CopyArrProductContext } from "../../Context/CoptArr";
 import { SetArrProductContext } from "../../Context/setFill";
 import { useState } from "react";
 import toast from "react-hot-toast";
-
+import deleteIcon from "../../assets/delete.png";
+import editIcon from "../../assets/edit.png";
 
 const Table = () => {
   let newArr;
@@ -147,84 +148,89 @@ const Table = () => {
           type="text"
           name="productType"
         />
-        
 
         <button
-          onClick={() =>{ 
-            setIsEditClicked(false)
+          onClick={() => {
+            setIsEditClicked(false);
             toast.success("Edit Details is Submitted");
-
           }}
-className="border 2 border-black mt-3 p-1 rounded-md bg-yellow-500 font-bold"
+          className="border 2 border-black mt-3 p-1 rounded-md bg-yellow-500 font-bold"
         >
           {" "}
           Submit Edit details{" "}
         </button>
       </div>
     </div>
-  ) :<div className="bg-gray-300 border-x-[1px] border-black">
-  <div>
-    <div>
-      <ul className="flex text-center font-bold bg-slate-100 border-black">
-        <li className="w-[15%] border-[1px] border-black">ProductId</li>
-        <li className="w-[15%] border-[1px] border-black">ProductTitles</li>
-        <li className="w-[15%] border-[1px] border-black">Description</li>
-        <li className="w-[15%] border-[1px] border-black">Price</li>
-        <li className="w-[15%] border-[1px] border-black">Size</li>
-        <li className="w-[15%] border-[1px] border-black">Quantity</li>
-        <li className="w-[15%] border-[1px] border-black">Delete Button</li>
-        <li className="w-[15%] border-[1px] border-black">Edit Button</li>
-      </ul>
+  ) : (
+    <div className="bg-gray-300 border-x-[1px] border-black">
+      <div>
+        <div>
+          <ul className="flex text-center font-bold bg-slate-100 border-black">
+            <li className="w-[15%] border-[1px] border-black">ProductId</li>
+            <li className="w-[15%] border-[1px] border-black">ProductTitles</li>
+            <li className="w-[15%] border-[1px] border-black">Description</li>
+            <li className="w-[15%] border-[1px] border-black">Price</li>
+            <li className="w-[15%] border-[1px] border-black">Size</li>
+            <li className="w-[15%] border-[1px] border-black">Quantity</li>
+            <li className="w-[15%] border-[1px] border-black">Delete Button</li>
+            <li className="w-[15%] border-[1px] border-black">Edit Button</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div className="flex-col flex align-middle items-center">
+          {arr.map((item, index) => (
+            <table className="w-full" key={index}>
+              <tbody>
+                <tr className="flex  border-black">
+                  <td className="w-[15%] border-[1px] border-black text-center">
+                    {item.ProductId}
+                  </td>
+                  <td className="w-[15%] border-[1px] border-black text-center">
+                    {item.ProductTitle}
+                  </td>
+                  <td className="w-[15%] border-[1px] border-black text-center">
+                    {item.ProductDescription}
+                  </td>
+                  <td className="w-[15%] border-[1px] border-black text-center">
+                    {item.ProductPrice}
+                  </td>
+                  <td className="w-[15%] border-[1px] border-black text-center">
+                    {item.ProductSize}
+                  </td>
+                  <td className="w-[15%] border-[1px] border-black text-center">
+                    {item.ProductQuantity}
+                  </td>
+                  <td className="w-[15%] border-[1px] grid place-items-center  border-black text-center">
+                    <img
+                    width={30}
+                      onClick={() => {
+                        deleteProduct(arr, index);
+                        toast.success("Product is Deleted");
+                      }}
+                      src={deleteIcon}
+                      alt="icon not found"
+                    />
+                  </td>
+                  <td className="w-[15%] border-[1px] grid place-items-center border-black text-center">
+                    <img
+                    width={20}
+                      onClick={() => {
+                        onEditClicked(arr, index);
+                        toast.success("Start Editing");
+                      }}
+                      src={editIcon}
+                      alt="icon not found"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          ))}
+        </div>
+      </div>
     </div>
-  </div>
-  <div>
-    <div className="flex-col flex align-middle items-center">
-      {arr.map((item, index) => (
-        <table className="w-full" key={index}>
-          <tbody>
-            <tr className="flex  border-black">
-              <td className="w-[15%] border-[1px] border-black text-center">
-                {item.ProductId}
-              </td>
-              <td className="w-[15%] border-[1px] border-black text-center">
-                {item.ProductTitle}
-              </td>
-              <td className="w-[15%] border-[1px] border-black text-center">
-                {item.ProductDescription}
-              </td>
-              <td className="w-[15%] border-[1px] border-black text-center">
-                {item.ProductPrice}
-              </td>
-              <td className="w-[15%] border-[1px] border-black text-center">
-                {item.ProductSize}
-              </td>
-              <td className="w-[15%] border-[1px] border-black text-center">
-                {item.ProductQuantity}
-              </td>
-              <td className="w-[15%] border-[1px]  border-black text-center">
-                <button onClick={() => {
-                  deleteProduct(arr, index);
-                  toast.success("Product is Deleted");
-                }}>
-                  Delete
-                </button>
-              </td>
-              <td className="w-[15%] border-[1px] border-black text-center">
-                <button onClick={() => {
-                  onEditClicked(arr, index);
-                  toast.success("Start Editing");
-                }}>
-                  Edit
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      ))}
-    </div>
-  </div>
-</div>
-
+  );
 };
 
 export default Table;
