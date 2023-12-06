@@ -8,6 +8,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import deleteIcon from "../../assets/delete.png";
 import editIcon from "../../assets/edit.png";
+import { EditContext } from "../../Context/isEditClicked";
 
 const Table = () => {
   let newArr;
@@ -17,7 +18,9 @@ const Table = () => {
 
   const { arrCopy, setCopy } = useContext(CopyArrProductContext);
   const { fill, setFill } = useContext(SetArrProductContext);
-  const [isEditClicked, setIsEditClicked] = useState(false);
+
+  
+  const{isEditClicked,setIsEditClicked}= useContext(EditContext)
 
   const [extraIndex, setExtraIndex] = useState("hello");
 
@@ -162,18 +165,17 @@ const Table = () => {
       </div>
     </div>
   ) : (
-    <div className="bg-gray-300 border-x-[1px] border-black">
+    <div className="bg-gray-300  border-x-[1px]  border-black">
       <div>
         <div>
           <ul className="flex text-center font-bold bg-slate-100 border-black">
-            <li className="w-[15%] border-[1px] border-black">ProductId</li>
-            <li className="w-[15%] border-[1px] border-black">ProductTitles</li>
-            <li className="w-[15%] border-[1px] border-black">Description</li>
-            <li className="w-[15%] border-[1px] border-black">Price</li>
-            <li className="w-[15%] border-[1px] border-black">Size</li>
-            <li className="w-[15%] border-[1px] border-black">Quantity</li>
-            <li className="w-[15%] border-[1px] border-black">Delete Button</li>
-            <li className="w-[15%] border-[1px] border-black">Edit Button</li>
+            <li className="w-[10%] border-[1px] border-black">S.no</li>
+            {/* <li className="w-[15%] border-[1px] border-black">ProductTitles</li> */}
+            <li className="w-[27%] border-[1px] border-black">Description</li>
+            <li className="w-[17%] border-[1px] border-black">Price</li>
+            <li className="w-[17%] border-[1px] border-black">Size</li>
+            <li className="w-[17%] border-[1px] border-black">Quantity</li>
+            <li className="w-[17%] border-[1px] border-black">Actions</li>
           </ul>
         </div>
       </div>
@@ -183,27 +185,24 @@ const Table = () => {
             <table className="w-full" key={index}>
               <tbody>
                 <tr className="flex  border-black">
-                  <td className="w-[15%] border-[1px] border-black text-center">
+                  <td className="w-[10%] border-[1px] border-black text-center">
                     {item.ProductId}
                   </td>
-                  <td className="w-[15%] border-[1px] border-black text-center">
-                    {item.ProductTitle}
-                  </td>
-                  <td className="w-[15%] border-[1px] border-black text-center">
+                  <td className="w-[27%] border-[1px] border-black text-center">
                     {item.ProductDescription}
                   </td>
-                  <td className="w-[15%] border-[1px] border-black text-center">
+                  <td className="w-[17%] border-[1px] border-black text-center">
                     {item.ProductPrice}
                   </td>
-                  <td className="w-[15%] border-[1px] border-black text-center">
+                  <td className="w-[17%] border-[1px] border-black text-center">
                     {item.ProductSize}
                   </td>
-                  <td className="w-[15%] border-[1px] border-black text-center">
+                  <td className="w-[17%] border-[1px] border-black text-center">
                     {item.ProductQuantity}
                   </td>
-                  <td className="w-[15%] border-[1px] grid place-items-center  border-black text-center">
+                  <td className="w-[17%] flex gap-2 border-[1px] justify-center items-center  border-black text-center">
                     <img
-                    width={30}
+                      width={20}
                       onClick={() => {
                         deleteProduct(arr, index);
                         toast.success("Product is Deleted");
@@ -211,10 +210,9 @@ const Table = () => {
                       src={deleteIcon}
                       alt="icon not found"
                     />
-                  </td>
-                  <td className="w-[15%] border-[1px] grid place-items-center border-black text-center">
+
                     <img
-                    width={20}
+                      width={15}
                       onClick={() => {
                         onEditClicked(arr, index);
                         toast.success("Start Editing");

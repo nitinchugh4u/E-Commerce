@@ -6,6 +6,8 @@ import toast from "react-hot-toast";
 export const ClientProduct = () => {
   const { Quantity, setQuantity } = useContext(QuantityProductContext);
 
+  const [addToCart,setAddToCart] = useState(true)
+
   const { arr } = useContext(ProductContext);
 
   const { cart, setCart } = useContext(CartProductContext);
@@ -40,7 +42,7 @@ export const ClientProduct = () => {
   // console.log("cart", cart);
   return (
     <div
-      className=" p-4 bg-gray-50 bg-[#e9e9e9]      flex flex-wrap justify-center
+      className=" p-4 bg-gray-50 bg-[#e9e9e9]       flex flex-wrap justify-center
       
     
     
@@ -50,22 +52,23 @@ export const ClientProduct = () => {
       {arr.map((item, index) => {
         return (
           <div
-            className="   bg-[#eaeaea]  mt-5  border-black    p-2 rounded-xl  flex flex-col justify-center gap-2 items-center "
+            className="   bg-[#eaeaea]  mt-5   border-black    p-2 rounded-xl  flex flex-col justify-center gap-2 items-center "
             // style={{ border: "1px solid black" }}
             key={index}
           >
             <img
-            // h-[150px]
-              className="h-[180px] w-[200px]  bg-white mb-2"
+            // h-[150px]  objrct fit mix blend mode darken
+              className="h-[180px] w-[200px]  bg-slate-300  mb-2 object-contain mix-blend-multiply  "
               src={item.ProductImg}
               alt="image"
             />
             {/* <h2>{item.ProductTitle}</h2> */}
             <h2 className="font-semibold">{item.ProductDescription}</h2>
-            <h2 className="font-bold">₹{item.ProductPrice}</h2>
+            <h2 className="font-bold">₹ {item.ProductPrice}</h2>
 
             <button
               onClick={() => {
+                setAddToCart
                 SelectedProducts(arr, index),
                   toast.success("Product Added To Cart");
               }}

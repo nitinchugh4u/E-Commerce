@@ -15,6 +15,8 @@ const Header = () => {
   const [filter, setFilter] = useState("men");
   const [Price, setPrice] = useState("");
 
+
+
   const inputValue = (e) => {
     if (filter !== "men") {
       const search = e.target.value;
@@ -42,6 +44,8 @@ const Header = () => {
   };
   console.log("fill", fill);
 
+
+
   const handleChange = (event) => {
     console.log(event.target.value, "fff");
     setFilter(event.target.value);
@@ -63,6 +67,8 @@ const Header = () => {
   };
   console.log("arr", arr);
 
+
+
   const handlePrices = (e) => {
     if (e.target.value === "PRICES") {
     } else if (e.target.value === "lowToHigh") {
@@ -83,8 +89,9 @@ const Header = () => {
     }
   };
 
+  
   return (
-    <div className="h-[10%] border-2   flex p-2 bg-[#eaeaea] ">
+    <div className="h-[10%] border-2   flex p-2 bg-[#eaeaea]  ">
       <section className="w-1/2 flex justify-evenly items-center">
         <img
           className="rounded-full"
@@ -126,15 +133,15 @@ const Header = () => {
           placeholder="Search by product, category or collection"
         />
         <Link to={"/Login"}>
-          <p>Login</p>
+          <p className="hover:text-red-500">Login</p>
         </Link>
 
         <Link to={"/Admin"}>
-          <p>Admin</p>
+          <p className="hover:text-red-500">Admin</p>
         </Link>
 
         <Link to={"/Cart"}>
-          <p>Cart</p>
+          <p className="hover:text-red-500">Cart</p>
         </Link>
       </section>
     </div>

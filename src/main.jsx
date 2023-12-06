@@ -22,25 +22,23 @@ import {
 import { SetArrProductContext, SetArrProductProvider } from "./Context/setFill";
 import { Toaster } from "react-hot-toast";
 import { ClientProduct } from "./Componentss/Components/3.ClientProduct";
+import { EditQuantityProductProvider } from "./Context/isEditClicked";
+import { EditContext } from "./Context/isEditClicked";
 
 const myRouter = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-
-      {path: "/",
-    element: <ClientProduct/>
-  },
+      { path: "/", element: <ClientProduct /> },
       {
         path: "/Admin",
         element: <Admin />,
       },
       {
         path: "/ProductForm",
-        element: <ProductForm/>
-
-      }
+        element: <ProductForm />,
+      },
     ],
   },
   {
@@ -63,12 +61,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     {/* <CopyArrProductProvider>  */}
 
     <QuantityProductProvider>
-      <Toaster />
+      <Toaster position="top-right" />
       <CartProductProvider>
         <ProductProvider>
           <CopyArrProductProvider>
             <SetArrProductProvider>
-              <RouterProvider router={myRouter} />
+              <EditQuantityProductProvider>
+                <RouterProvider router={myRouter} />
+              </EditQuantityProductProvider>
             </SetArrProductProvider>
           </CopyArrProductProvider>
         </ProductProvider>
