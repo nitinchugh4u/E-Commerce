@@ -47,7 +47,7 @@ export const Cart = () => {
   return (
     <div className="flex flex-col justify-evenly">
       <div>
-        <h1 className=" bg-[#eaeaea]  font-bold p-4 ">Cart</h1>
+        <h1 className=" bg-[#eaeaea] bg-slate-300  font-bold p-4 ">Cart</h1>
       </div>
 
       <div className="flex  ">
@@ -157,7 +157,7 @@ export const Cart = () => {
               />
               <Link to="/">
                 {" "}
-                <p className="bg-gray-200 font-bold  text-center">
+                <p className="bg-gray-200 p-2 rounded-md font-bold  text-center">
                   Please Go For Shopping
                 </p>{" "}
               </Link>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ProductContext } from "../../Context/1.ProductData";
 import { CopyArrProductContext } from "../../Context/CoptArr";
 import { SetArrProductContext } from "../../Context/setFill";
+// import { Link } from "react-router-dom";
 
 const Header = () => {
   const { arr, setArr } = useContext(ProductContext);
@@ -49,15 +50,22 @@ const Header = () => {
   const handleChange = (event) => {
     console.log(event.target.value, "fff");
     setFilter(event.target.value);
+    const{value} = event.target;
+    
 
     const filteredArray = arrCopy.filter((item, index) => {
       // console.log("array",filteredArray);
 
-      if (event.target.value === "men") {
-        return arrCopy;
-      }
 
-      return item.productType === event.target.value;
+      return  item.productType === value ||  value === "men"   ;
+      // return 
+      
+
+      // if (event.target.value === "men") {
+      //   return arrCopy;
+      // }
+
+      // return item.productType === event.target.value;
     });
 
     console.log("filteredArray", filteredArray);
@@ -93,21 +101,34 @@ const Header = () => {
   return (
     <div className="h-[10%] border-2   flex p-2 bg-[#eaeaea]  ">
       <section className="w-1/2 flex justify-evenly items-center">
-        <img
+        {/* <img
           className="rounded-full"
           src="https://img.freepik.com/free-vector/hand-drawn-clothing-store-logo-design_23-2149499592.jpg"
           alt=""
           height="60px"
           width="60px"
-        />
+        /> */}
 
-        <h1 className="text-[1.4rem] font-bold text-blue-900">
+        <Link to="/" > <img
+          className="rounded-full"
+          src="https://img.freepik.com/free-vector/hand-drawn-clothing-store-logo-design_23-2149499592.jpg"
+          alt=""
+          height="60px"
+          width="60px"
+        /></Link>
+
+        <Link to="/" > <h1 className="text-[1.4rem] font-bold text-red-700">
           Style Collection
         </h1>
+  </Link>
+
+        {/* <h1 className="text-[1.4rem] font-bold text-blue-900">
+          Style Collection
+        </h1> */}
 
         <select
           className="p-2 bg-none rounded-md "
-          onChange={(e) => handleChange(e)}
+          onChange={handleChange}
           value={filter}
         >
           {/* map */}
