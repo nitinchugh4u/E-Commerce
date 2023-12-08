@@ -24,6 +24,7 @@ import { Toaster } from "react-hot-toast";
 import { ClientProduct } from "./Componentss/Components/3.ClientProduct";
 import { EditQuantityProductProvider } from "./Context/isEditClicked";
 import { EditContext } from "./Context/isEditClicked";
+import { SignUp } from "./Componentss/Components/SignUp";
 
 const myRouter = createBrowserRouter([
   {
@@ -49,6 +50,11 @@ const myRouter = createBrowserRouter([
     path: "/Login",
     element: <Login />,
   },
+  {
+    path: "/SignUp",
+    element: <SignUp />,
+
+  }
 
   // {path:"/Admin",
   // element:<Admin/>
