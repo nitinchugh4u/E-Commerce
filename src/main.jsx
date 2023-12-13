@@ -54,8 +54,7 @@ const myRouter = createBrowserRouter([
   {
     path: "/SignUp",
     element: <SignUp />,
-
-  }
+  },
 
   // {path:"/Admin",
   // element:<Admin/>
@@ -67,21 +66,20 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     {/* <App/>  */}
     {/* <CopyArrProductProvider>  */}
     <LoginProductProvider>
-    <QuantityProductProvider>
-      <Toaster position="top-right" />
-      <CartProductProvider>
-        <ProductProvider>
-          <CopyArrProductProvider>
-            <SetArrProductProvider>
-              <EditQuantityProductProvider>
-                <RouterProvider router={myRouter} />
-                
-              </EditQuantityProductProvider>
-            </SetArrProductProvider>
-          </CopyArrProductProvider>
-        </ProductProvider>
-      </CartProductProvider>
-    </QuantityProductProvider>
+      <QuantityProductProvider>
+        <Toaster position="top-right" />
+        <CartProductProvider>
+          <ProductProvider>
+            <CopyArrProductProvider>
+              <SetArrProductProvider>
+                <EditQuantityProductProvider>
+                  <RouterProvider router={myRouter} />
+                </EditQuantityProductProvider>
+              </SetArrProductProvider>
+            </CopyArrProductProvider>
+          </ProductProvider>
+        </CartProductProvider>
+      </QuantityProductProvider>
     </LoginProductProvider>
     {/* </CopyArrProductProvider> */}
 
