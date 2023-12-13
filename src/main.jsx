@@ -25,6 +25,7 @@ import { ClientProduct } from "./Componentss/Components/3.ClientProduct";
 import { EditQuantityProductProvider } from "./Context/isEditClicked";
 import { EditContext } from "./Context/isEditClicked";
 import { SignUp } from "./Componentss/Components/SignUp";
+import { LoginProductProvider } from "./Context/LoginORLogout";
 
 const myRouter = createBrowserRouter([
   {
@@ -65,7 +66,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     {/* <App/>  */}
     {/* <CopyArrProductProvider>  */}
-
+    <LoginProductProvider>
     <QuantityProductProvider>
       <Toaster position="top-right" />
       <CartProductProvider>
@@ -74,12 +75,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <SetArrProductProvider>
               <EditQuantityProductProvider>
                 <RouterProvider router={myRouter} />
+                
               </EditQuantityProductProvider>
             </SetArrProductProvider>
           </CopyArrProductProvider>
         </ProductProvider>
       </CartProductProvider>
     </QuantityProductProvider>
+    </LoginProductProvider>
     {/* </CopyArrProductProvider> */}
 
     {/* <RouterProvider router={myRouter} /> */}

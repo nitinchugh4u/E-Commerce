@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+const users = [
+  { "id": 1, "name": "Alice" },
+  { "id": 2, "name": "Bob" },
+  { "id": 3, "name": "Charlie" }
+]
+
+const orders = [
+  { orderId: 1, "id": 101, "name": "Product A", "price": 10 },
+  { orderId: 1, "id": 102, "name": "Product B", "price": 20 },
+  { orderId: 2, "id": 103, "name": "Product C", "price": 15 }
+]
+
+
+
+
+const mergedResponse = [
+
+  {
+    "userId": 1,
+    "userName": "Alice",
+    "orders": [
+      { "": 101, "name": "Product A", "price": 10 },
+      { "orderId": 102, "name": "Product B", "price": 20 }
+    ]
+  },
+  {
+    "userId": 2,
+    "userName": "Bob",
+    "orders": [
+      { "orderId": 103, "name": "Product C", "price": 15 }
+    ]
+  },
+  {
+    "userId": 3,
+    "userName": "Charlie",
+    "orders": []
+  }
+]
+
+
+
+
+</script>

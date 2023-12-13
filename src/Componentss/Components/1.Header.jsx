@@ -3,9 +3,21 @@ import { Link } from "react-router-dom";
 import { ProductContext } from "../../Context/1.ProductData";
 import { CopyArrProductContext } from "../../Context/CoptArr";
 import { SetArrProductContext } from "../../Context/setFill";
+import { LogInContext } from "../../Context/LoginORLogout";
+import { signOut } from "firebase/auth";
+import { database } from "./Firebase/FirebaseConfiguration";
+import { useNavigate } from "react-router-dom";
+
 // import { Link } from "react-router-dom";
 
 const Header = () => {
+  const history = useNavigate()
+
+  const { isLogin, setIsLogin } = useContext(LogInContext);
+  console.log("isLogin",isLogin)
+
+
+
   const { arr, setArr } = useContext(ProductContext);
   const { arrCopy, setCopy } = useContext(CopyArrProductContext);
 
@@ -97,6 +109,18 @@ const Header = () => {
     }
   };
 
+
+  const handleClick=()=>{
+    signOut(database).then(val=>{
+      console.log(val,"val")
+      history('/')
+      setIsLogin(!isLogin)
+
+
+    })
+
+  }
+
   
   return (
     <div className="h-[10%] border-2   flex p-2 bg-[#eaeaea]  ">
@@ -153,10 +177,25 @@ const Header = () => {
           type="text"
           placeholder="Search by product, category or collection"
         />
-        <Link to={"/Login"}>
+        
+        {/* <Link to={"/Login"}>
           <p className="hover:text-red-500">Login</p>
-        </Link>
+        </Link> */}
 
+        {isLogin ? 
+        (
+        // <Link to={"/Login"}>
+          <p onClick={handleClick} className="hover:text-red-500 ">Logout</p>
+        // </Link>
+        ): 
+        
+        (<Link to={"/Login"}>
+          <p className="hover:text-red-500">Login</p>
+        </Link>) 
+        }
+
+       
+       
         <Link to={"/Admin"}>
           <p className="hover:text-red-500">Admin</p>
         </Link>
