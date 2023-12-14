@@ -1,7 +1,9 @@
 
 import React from "react";
 // import { Link } from "react-router-dom";
-import { database } from "./Firebase/FirebaseConfiguration";
+// import { database } from "./Firebase/FirebaseConfiguration";
+import { auth } from "./Firebase/FirebaseConfiguration";
+
 import {  createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 
@@ -69,7 +71,7 @@ const[details,setDetails] = useState({
 console.log("hello")
 
 
-createUserWithEmailAndPassword(database,details.email,details.password).then(data=>{
+createUserWithEmailAndPassword(auth,details.email,details.password).then(data=>{
       console.log(data,"authdata")
       setIsLogin(!isLogin)
       // setCheck(!check)
